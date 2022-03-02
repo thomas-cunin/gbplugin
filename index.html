@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="./style.css" type="text/css" />
+<script src="./GBJSTK.js"></script>
+<script src="./script.js"></script>
+<script src="./jquery.js"></script>
+<script>
+gbGetUser()
+    function gbPluginDidLoad ()
+    {
+        if ( gbPostData && gbPostData['user'] ) {
+                var user = JSON.parse(decodeURIComponent(gbPostData['user']));
+            console.log(user);
+            if (user['displayName']) {
+                document.getElementById('displayname').innerHTML = user['displayName'];
+            }
+            if (user['userName']) {
+                document.getElementById('username').innerHTML = user['userName'];
+            }
+            if (user['email']) {
+                document.getElementById('mail').innerHTML = user['email'];
+            }
+            if (user['location']) {
+                document.getElementById('location').innerHTML = user['location'];
+            }
+        }
+    }
+
+$.ajax({
+  method: "GET",
+  url: "http://212.227.70.244/goodbarbase/public/onboarding/rmact",
+  data: { email: 'thomas.cunin7@gmail.com', step: 1 }
+})
+  .done(function( msg ) {
+    console.log(msg);
+  });
+</script>
+
+</head>
+<body>
+    	
+</body>
+</html>
